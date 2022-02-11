@@ -7,12 +7,12 @@ Docker based in Alpine OS with vlmcsd compiled from "source" (vlmcsd GitHub)
 
 ## Get Image
 ```
-docker pull ideving/vlmcsd:1.0.0
+docker pull igeting/vlmcsd:1.0.0
 ```
 
 ## Server Usage
 ```
-docker run -d -p 1688:1688 --restart=always --name vlmcsd ideving/vlmcsd
+docker run -d -p 1688:1688 --restart=always --name vlmcsd igeting/vlmcsd
 ```
 ## To view docker log
 Now vlmcsd process send logs to docker.
