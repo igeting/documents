@@ -28,7 +28,7 @@ type Other struct {
 }
  
 func main() { 
-    jsonStr := `{"host": "http://localhost:9090","port": 9090,"analytics_file": "","static_file_version": 1,"static_dir": "E:/Project/goTest/src/","templates_dir": "E:/Project/goTest/src/templates/","serTcpSocketHost": ":12340","serTcpSocketPort": 12340,"fruits": ["apple", "peach"]}`
+    jsonStr := `{"host": "http://localhost:8080","port": 8080,"analytics_file": "","static_file_version": 1,"static_dir": "/opt/Project/goTest/src/","templates_dir": "/opt/Project/goTest/src/templates/","serTcpSocketHost": ":12340","serTcpSocketPort": 12340,"fruits": ["apple", "peach"]}`
  
     //json str >> map
     var dat map[string]interface{}
