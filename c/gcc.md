@@ -72,7 +72,7 @@ gcc -c -o x2.o x2.c
 ar -rc libx.a x1.o x2.o
 ```
 
-## dynamic libaray
+## shared libaray
 
 ### single source
 ```
@@ -94,7 +94,7 @@ gcc -shared -fPIC -o libx.so x1.c x2.c
 gcc -shared -fPIC -o libx.so x1.o x2.o
 ```
 
-## use dynamic library (-static use static mode)
+## use shared library (-static use static mode)
 ```
 gcc -c -o xxx.o xxx.c
 ar -rc libxxx.a xxx.o
@@ -106,7 +106,7 @@ gcc -o test test.c libxxx.a
 ```
 
 
-## use dynamic library (windows use libxxx.dll)
+## use shared library (windows use libxxx.dll)
 ```
 gcc -shared -fPIC -o libxxx.so xxx.c
 gcc -o test -L. -lxxx test.c
