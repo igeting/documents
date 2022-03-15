@@ -1,13 +1,13 @@
 # 证书操作
 
-- 生成私钥（1024/2048/4096）
+- 生成私钥（1024/2048）
 ```
 openssl genrsa -out ca.key 1024
 ```
 
 - 制作解密后的私钥（非必要）
 ```
-openssl rsa -in ca.key -out decrypt.key
+openssl rsa -in ca.key -out ca.key
 ```
 
 - 生成根证书（公钥）
