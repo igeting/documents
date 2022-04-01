@@ -98,7 +98,7 @@ CMAKE_INSTALL_PREFIX
 BUILD_SHARED_LIBS
 ```
 
-## example
+## example 1
 ```
 cmake_minimum_required(VERSION 3.15)
 project(c_demo)
@@ -107,4 +107,84 @@ include_directories(header)
 set(SRC src/main.cpp)
 aux_source_directory(src SRC)
 add_executable(c_demo ${SRC})
+```
+
+# cmake
+## INCLUDE_DIRECTORIES（添加头文件目录）
+它相当于g++选项中的-I参数的作用，也相当于环境变量中增加路径到CPLUS_INCLUDE_PATH变量的作用。
+```
+include_directories("/opt/MATLAB/R2012a/extern/include")
+export CPLUS_INCLUDE_PATH=CPLUS_INCLUDE_PATH:$MATLAB/extern/include
+```
+
+## LINK_DIRECTORIES（添加需要链接的库文件目录）
+```
+link_directories(directory1 directory2 ...)
+```
+
+它相当于g++命令的-L选项的作用，也相当于环境变量中增加LD_LIBRARY_PATH的路径的作用。
+
+```
+LINK_DIRECTORIES("/opt/MATLAB/R2012a/bin/glnxa64")
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MATLAB/bin/glnxa64
+```
+
+## LINK_LIBRARIES（添加需要链接的库文件路径，注意这里是全路径）
+```
+LINK_LIBRARIES("/opt/MATLAB/R2012a/bin/glnxa64/libeng.so")
+LINK_LIBRARIES("/opt/MATLAB/R2012a/bin/glnxa64/libmx.so")
+```
+or
+```
+LINK_LIBRARIES("/opt/MATLAB/R2012a/bin/glnxa64/libeng.so"　"/opt/MATLAB/R2012a/bin/glnxa64/libmx.so")
+```
+
+
+## TARGET_LINK_LIBRARIES（设置要链接的库文件的名称）
+```
+TARGET_LINK_LIBRARIES(targetlibrary1 <debug | optimized> library2 ..)
+```
+
+```
+TARGET_LINK_LIBRARIES(myProject hello)，连接libhello.so库
+TARGET_LINK_LIBRARIES(myProject libhello.a)
+TARGET_LINK_LIBRARIES(myProject libhello.so)
+```
+or
+```
+TARGET_LINK_LIBRARIES(myProject libeng.so)
+TARGET_LINK_LIBRARIES(myProject eng)
+TARGET_LINK_LIBRARIES(myProject -leng)
+```
+
+## example
+```
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+ 
+include_directories("/opt/MATLAB/R2012a/extern/include")
+ 
+#directly link to the libraries.
+link_libraries("/opt/MATLAB/R2012a/bin/glnxa64/libeng.so")
+link_libraries("/opt/MATLAB/R2012a/bin/glnxa64/libmx.so")
+ 
+#equals to below
+#link_libraries("/opt/MATLAB/R2012a/bin/glnxa64/libeng.so" "/opt/MATLAB/R2012a/bin/glnxa64/libmx.so")
+ 
+add_executable(myProject main.cpp) 
+```
+
+```
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+ 
+include_directories("/opt/MATLAB/R2012a/extern/include")
+
+link_directories("/opt/MATLAB/R2012a/bin/glnxa64")
+ 
+add_executable(myProject main.cpp)
+ 
+target_link_libraries(myProject eng mx)
+ 
+#equals to below
+#target_link_libraries(myProject -leng -lmx)
+#target_link_libraries(myProject libeng.so libmx.so)
 ```
