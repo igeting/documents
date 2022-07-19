@@ -16,6 +16,6 @@ https://marketplace.visualstudio.com/items?itemName=golang.go
 
 ## go plugin (go:install/update)
 ```
-go get -v golang.org/x/tools/gopls
-go get -v github.com/go-delve/delve/cmd/dlv
+go install -v golang.org/x/tools/gopls
+go install -v github.com/go-delve/delve/cmd/dlv
 ```
